@@ -13,15 +13,15 @@ public class CharacterRepository {
 
     public UUID createEmptyCharacter() {
         Character newChar = new Character("");
-        persist(newChar);
         return newChar.getId();
     }
 
-    private void persist(Character character) {
+    private Character persist(Character character) {
         if (this.characters == null) {
             this.characters = new HashSet<>();
         }
         this.characters.add(character);
+        return character;
     }
 
     public Set<Character> getAllCharacters() {
@@ -29,5 +29,9 @@ public class CharacterRepository {
             return Collections.emptySet();
         }
         return this.characters;
+    }
+
+    public Character getById(UUID id) {
+        return this.characters.stream().findAny().orElse(null);
     }
 }
