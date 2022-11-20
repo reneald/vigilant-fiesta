@@ -13,7 +13,7 @@ public class CharacterRepository {
 
     public UUID createEmptyCharacter() {
         Character newChar = new Character("");
-        return newChar.getId();
+        return persist(newChar).getId();
     }
 
     private Character persist(Character character) {
