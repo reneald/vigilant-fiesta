@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine
+FROM bellsoft/liberica-openjdk-alpine:17
 MAINTAINER leanderonline.be
-COPY target/cscg-0.0.1.jar cscg-0.0.q.jar
+COPY target/cscg-0.0.1-SNAPSHOT.jar cscg-0.0.1.jar
 ENTRYPOINT ["java","-jar","/cscg-0.0.1.jar"]
