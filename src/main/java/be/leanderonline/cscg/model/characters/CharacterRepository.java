@@ -32,6 +32,19 @@ public class CharacterRepository {
     }
 
     public Character getById(UUID id) {
-        return this.characters.stream().findAny().orElse(null);
+        if (this.characters == null) {
+            return null;
+        }
+        return this.characters.stream()
+                .filter(character -> character.getId() == id)
+                .findAny()
+                .orElse(null);
+    }
+
+    public Character createCharacter(Character character) {
+        if (getById(character.getId()) != null) {
+            throw new IllegalArgumentException("A character with that UUID already exists.");
+        }
+        return persist(character);
     }
 }

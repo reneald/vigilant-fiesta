@@ -1,30 +1,28 @@
 package be.leanderonline.cscg.api;
 
+import be.leanderonline.cscg.api.dtos.CharacterDto;
 import be.leanderonline.cscg.model.characters.Character;
-import be.leanderonline.cscg.model.characters.CharacterRepository;
+import be.leanderonline.cscg.model.characters.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
-import java.util.UUID;
 
 @CrossOrigin
 @RestController()
 @RequestMapping("/character")
 public class CharacterEndpoint {
     @Autowired
-    private CharacterRepository characterRepository;
+    private CharacterService service;
 
-    @GetMapping("/new")
-    public UUID createEmptyCharacter() {
-        return characterRepository.createEmptyCharacter();
+    @PostMapping("/new")
+    public Character createNewCharacter(@RequestBody CharacterDto characterDto) {
+        Character characterToCreate = ModelMapperUtil.map(characterDto, Character.class);
+        return service.createCharacter(characterToCreate);
     }
 
     @GetMapping("/all")
     public Set<Character> getAllCharacters() {
-        return characterRepository.getAllCharacters();
+        return service.getAllCharacters();
     }
 }

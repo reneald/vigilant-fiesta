@@ -11,9 +11,16 @@ public class Character {
     private Statistics statistics;
     private String name;
 
+    public Character() {
+        this.id = UUID.randomUUID();
+    }
+
     public Character(String name) {
         this.id = UUID.randomUUID();
         this.name = name;
     }
 
+    public boolean hasId() {
+        return this.id != null;
+    }
 }
