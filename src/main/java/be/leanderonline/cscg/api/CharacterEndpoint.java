@@ -16,9 +16,9 @@ public class CharacterEndpoint {
     private CharacterService service;
 
     @PostMapping("/new")
-    public Character createNewCharacter(@RequestBody CharacterDto characterDto) {
+    public CharacterDto createNewCharacter(@RequestBody CharacterDto characterDto) {
         Character characterToCreate = ModelMapperUtil.map(characterDto, Character.class);
-        return service.createCharacter(characterToCreate);
+        return ModelMapperUtil.map(service.createCharacter(characterToCreate), CharacterDto.class);
     }
 
     @GetMapping("/all")
