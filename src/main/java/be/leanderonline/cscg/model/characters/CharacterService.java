@@ -3,22 +3,18 @@ package be.leanderonline.cscg.model.characters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-import java.util.UUID;
+import java.util.List;
 
 @Service
 public class CharacterService {
     @Autowired
-    private SimpleCharacterRepository repository;
+    private MongoCharacterRepository repository;
 
-    public UUID createEmptyCharacter() {
-        return repository.createEmptyCharacter();
-    }
     public Character createCharacter(Character character) {
-        return repository.createCharacter(character);
+        return repository.insert(character);
     }
 
-    public Set<Character> getAllCharacters() {
-        return repository.getAllCharacters();
+    public List<Character> getAllCharacters() {
+        return repository.findAll();
     }
 }

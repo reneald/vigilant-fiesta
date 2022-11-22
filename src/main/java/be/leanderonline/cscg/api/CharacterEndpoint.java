@@ -6,7 +6,7 @@ import be.leanderonline.cscg.model.characters.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import java.util.List;
 
 @CrossOrigin
 @RestController()
@@ -16,13 +16,13 @@ public class CharacterEndpoint {
     private CharacterService service;
 
     @PostMapping("/new")
-    public CharacterDto createNewCharacter(@RequestBody CharacterDto characterDto) {
+    public @ResponseBody CharacterDto createNewCharacter(@RequestBody CharacterDto characterDto) {
         Character characterToCreate = ModelMapperUtil.map(characterDto, Character.class);
         return ModelMapperUtil.map(service.createCharacter(characterToCreate), CharacterDto.class);
     }
 
     @GetMapping("/all")
-    public Set<Character> getAllCharacters() {
+    public List<Character> getAllCharacters() {
         return service.getAllCharacters();
     }
 }
