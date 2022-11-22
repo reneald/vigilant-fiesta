@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Repository
-public class TypeRepository {
+public class SimpleTypeRepository {
     private Set<Type> types;
 
     public Optional<Type> getById(int id) {

@@ -9,7 +9,7 @@ import java.util.UUID;
 @Service
 public class CharacterService {
     @Autowired
-    private CharacterRepository repository;
+    private SimpleCharacterRepository repository;
 
     public UUID createEmptyCharacter() {
         return repository.createEmptyCharacter();

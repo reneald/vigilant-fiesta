@@ -2,11 +2,15 @@ package be.leanderonline.cscg.model.characters;
 
 import be.leanderonline.cscg.model.characters.stats.Statistics;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
 @Data
+@Document("characters")
 public class Character {
+    @Id
     private final UUID id;
     private Statistics statistics;
     private String name;

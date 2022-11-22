@@ -1,4 +1,7 @@
 package be.leanderonline.cscg.model.characters.types;
 
-public record Type(int id, int might, int speed, int intellect, int additionalPoints) {
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("types")
+public record Type(String name, int might, int speed, int intellect, int additionalPoints) {
 }

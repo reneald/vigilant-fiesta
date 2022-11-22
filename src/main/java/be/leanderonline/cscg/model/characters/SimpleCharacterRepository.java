@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Repository
-public class CharacterRepository {
+public class SimpleCharacterRepository {
     private Set<Character> characters;
 
     public UUID createEmptyCharacter() {

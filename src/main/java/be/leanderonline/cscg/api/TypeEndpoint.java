@@ -1,7 +1,7 @@
 package be.leanderonline.cscg.api;
 
+import be.leanderonline.cscg.model.characters.types.SimpleTypeRepository;
 import be.leanderonline.cscg.model.characters.types.Type;
-import be.leanderonline.cscg.model.characters.types.TypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.Set;
 @RequestMapping("/type")
 public class TypeEndpoint {
     @Autowired
-    private TypeRepository repository;
+    private SimpleTypeRepository repository;
 
     @GetMapping("/{id}")
     public Type getById(int id) {
