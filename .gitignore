@@ -170,3 +170,6 @@ build/
 ### VS Code ###
 .vscode/
 /src/main/resources/docs/
+
+### environment settings ###
+.env
