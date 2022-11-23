@@ -1,9 +1,11 @@
 package be.leanderonline.cscg.model;
 
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 
 import java.util.UUID;
 
+@EqualsAndHashCode
 public abstract class UuidIdentifiedEntity {
     @Id
     protected UUID id;
