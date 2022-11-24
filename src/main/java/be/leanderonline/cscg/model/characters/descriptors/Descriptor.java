@@ -1,5 +1,8 @@
 package be.leanderonline.cscg.model.characters.descriptors;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document("descriptors")
 public record Descriptor(int id, String name) {
     public static final int APPEALING = 1;
     public static final int BENEFICENT = 2;
