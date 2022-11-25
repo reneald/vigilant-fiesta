@@ -2,9 +2,13 @@ package be.leanderonline.cscg.model.characters.stats;
 
 import be.leanderonline.cscg.model.characters.types.Type;
 
-public record Statistics(Statistic might, Statistic speed, Statistic intellect, int pointsToSpend) {
+public record Statistics(Statistic might, Statistic speed, Statistic intellect, PointsToSpend pointsToSpend) {
     public Statistics(Type type) {
-        this(might(type), speed(type), intellect(type), type.additionalPoints());
+        this(might(type), speed(type), intellect(type), pointsToSpend(type));
+    }
+
+    private static PointsToSpend pointsToSpend(Type type) {
+        return new PointsToSpend(type.additionalPoints());
     }
 
     private static Statistic might(Type type) {
